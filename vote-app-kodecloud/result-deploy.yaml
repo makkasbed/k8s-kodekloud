@@ -7,7 +7,6 @@ spec:
   selector:
     matchLabels:
       name: results-app-pod
-      app: results-app
   template:
     metadata:
       name: results-app-pod
