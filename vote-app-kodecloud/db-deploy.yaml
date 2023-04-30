@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: db-pod
+      name: db-pod
   template:
     metadata:
       labels:
