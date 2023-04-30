@@ -13,4 +13,3 @@ spec:
       nodePort: 31001
   selector:
     name: results-app-pod
-    app: voting-app
