@@ -3,12 +3,13 @@ kind: Service
 metadata:
   name: db
   labels:
-    name: postgres-service
+    name: db
     app: voting-app
 spec:
+  type: ClusterIP
   selector:
     app: voting-app
-    name: db-pod
+    name: db
   ports:
   - port: 5432
     targetPort: 5432

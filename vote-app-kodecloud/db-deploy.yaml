@@ -5,16 +5,24 @@ metadata:
 spec:
   selector:
     matchLabels:
-      name: db-pod
+      name: db
   template:
     metadata:
       labels:
         app: voting-app
-        name: db-pod
+        name: db
     spec:
       containers:
       - name: postgres
-        image: postgres:latest
+        image: postgres:9.4
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        volumeMounts:
+         - mountPath: "/var/lib/postgresql/data"
+           name: "db-data"
+           type: "EmptyDir"
         ports:
         - containerPort: 5432
         env:
@@ -22,4 +30,6 @@ spec:
             value: "postgres"
           - name: POSTGRES_PASSWORD
             value: "postgres"
+          - name: POSTGRES_HOST_AUTH_METHOD
+            value: trust
   replicas: 2
